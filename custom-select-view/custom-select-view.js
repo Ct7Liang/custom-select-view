@@ -63,11 +63,17 @@ Component({
           tempObject: this.properties.data[0],
         })
       }
-      this.setData({
-        isShow: false,
-        currentObject: this.data.tempObject
-      })
-      this.triggerEvent('onValueSelected', this.data.currentObject, {})
+      if (this.data.currentObject==null || this.data.tempObject[this.properties.showLabelKey] != this.data.currentObject[this.properties.showLabelKey]){
+        this.setData({
+          isShow: false,
+          currentObject: this.data.tempObject
+        })
+        this.triggerEvent('onValueSelected', this.data.currentObject, {})
+      }else{
+        this.setData({
+          isShow: false,
+        })
+      }
     },
 
     /**
