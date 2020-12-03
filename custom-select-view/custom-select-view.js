@@ -58,17 +58,25 @@ Component({
      * 选中
      */
     commit() {
-      if (this.properties.data.length != 0 && this.data.tempObject == null) {
-        this.setData({
-          tempObject: this.properties.data[0],
-        })
-      }
-      if (this.data.currentObject==null || this.data.tempObject[this.properties.showLabelKey] != this.data.currentObject[this.properties.showLabelKey]){
-        this.setData({
-          isShow: false,
-          currentObject: this.data.tempObject
-        })
-        this.triggerEvent('onValueSelected', this.data.currentObject, {})
+      if (this.properties.data.length != 0){
+        if (this.data.tempObject == null){
+          this.setData({
+            tempObject: this.properties.data[0],
+            isShow: false,
+            currentObject: this.properties.data[0],
+          })
+          this.triggerEvent('onValueSelected', this.data.currentObject, {})
+        } else if (this.data.tempObject[this.properties.showLabelKey] != this.data.currentObject[this.properties.showLabelKey]){
+          this.setData({
+            isShow: false,
+            currentObject: this.data.tempObject
+          })
+          this.triggerEvent('onValueSelected', this.data.currentObject, {})
+        } else{
+          this.setData({
+            isShow: false,
+          })
+        }
       }else{
         this.setData({
           isShow: false,
