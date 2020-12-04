@@ -94,5 +94,11 @@ this.selectComponent('#type-select-view').hide()
   },
 ```
 
+###### 5.重置(当界面中设置的数据在前端置空后,由于组件内的数据仍然有效,此时点击确定,默认选中第一个的时候不会调用到回调函数,因此在前端数据置空的时候,也需要将组件内的数据值为空)
+
+```
+this.selectComponent('#type-select-view').reset()
+```
+
 
 

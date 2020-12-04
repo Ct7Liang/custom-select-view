@@ -66,7 +66,7 @@ Component({
             currentObject: this.properties.data[0],
           })
           this.triggerEvent('onValueSelected', this.data.currentObject, {})
-        } else if (this.data.tempObject[this.properties.showLabelKey] != this.data.currentObject[this.properties.showLabelKey]){
+        } else if (this.data.currentObject == null || this.data.tempObject[this.properties.showLabelKey] != this.data.currentObject[this.properties.showLabelKey]){
           this.setData({
             isShow: false,
             currentObject: this.data.tempObject
@@ -105,6 +105,16 @@ Component({
     bindChange(e) {
       // console.log(e)
       this.data.tempObject = this.properties.data[e.detail.value[0]]
+    },
+
+    /**
+     * 重置
+     */
+    reset: function () {
+      this.setData({
+        currentObject: null,
+        tempObject: null
+      })
     },
 
   },
